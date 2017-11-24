@@ -4,7 +4,7 @@ from captionstransformer import core
 
 class Reader(core.Reader):
     def text_to_captions(self):
-        soup = BeautifulSoup(self.rawcontent)
+        soup = BeautifulSoup(self.rawcontent, "lxml")
         texts = soup.find_all('p')
         for text in texts:
             caption = core.Caption()
