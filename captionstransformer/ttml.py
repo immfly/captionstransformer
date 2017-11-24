@@ -17,11 +17,11 @@ class Reader(core.Reader):
 
     def get_date(self, time_str):
         try:
-            convertedTime = datetime.strptime(end_date, '%H:%M:%S')
+            convertedTime = datetime.strptime(time_str, '%H:%M:%S')
         except ValueError as v:
             ulr = len(v.args[0].partition('unconverted data remains: ')[2])
             if ulr:
-                convertedTime = datetime.strptime(end_date, "%H:%M:%S.%f")
+                convertedTime = datetime.strptime(time_str, "%H:%M:%S.%f")
             else:
                 raise v
         return convertedTime
