@@ -37,7 +37,7 @@ class Reader(object):
 
 
 class Writer(object):
-    DOCUMENT_TPL = u"%s\n"
+    DOCUMENT_TPL = u"%s"
     CAPTION_TPL = u"%(start)s , %(end)s , %(text)s"
 
     def __init__(self, fobject, captions=None):
