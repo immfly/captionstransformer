@@ -1,4 +1,5 @@
 from datetime import datetime
+from datetime import timedelta
 from bs4 import BeautifulSoup
 from captionstransformer import core
 
@@ -22,6 +23,10 @@ class Reader(core.Reader):
             ulr = len(v.args[0].partition('unconverted data remains: ')[2])
             if ulr:
                 convertedTime = datetime.strptime(time_str, "%H:%M:%S.%f")
+            if time_str.endswith('s'):
+                seconds = float(time_str[:-1])
+                delta = timedelta(seconds=seconds)
+                convertedTime = datetime(1900, 1, 1, 0, 0) + delta
             else:
                 raise v
         return convertedTime
